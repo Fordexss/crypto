@@ -1,0 +1,33 @@
+{%extends 'index.html' %}
+{%block content%}
+<br><br><br><br><br>
+<div class="container"  style="width: 700px; height: 500px; margin-bottom: -20px;">
+    <form method="post">
+        <h2>Конвертер</h2>
+        <p>
+        {{form.from_crypto.label}}
+        {{form.from_crypto}}
+        </p>
+        <p>
+        {{form.amount.label}}
+        {{form.amount}}
+        </p>
+        <p>
+        {{form.to_crypto.label}}
+        {{form.to_crypto}}
+        </p>
+        {{form.submit}}
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    {% if category == 'converted' %}
+    <div class="alert alert-info">
+        {{ message }}
+    </div>
+    {%endif%}
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+</div>
+{%endblock content%}

@@ -1,0 +1,150 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #0366d6;
+    color: #fff;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul.navbar-nav.mr-auto {
+    margin-right: auto;
+}
+
+nav ul.navbar-nav.ml-auto {
+    margin-left: auto;
+}
+
+a.button {
+    padding: 1px 6px;
+    border: 1px solid rgb(99, 99, 99);
+    border-radius: 3px;
+    color: buttontext;
+    background-color: buttonface;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.5em;
+    color: rgb(70, 70, 70);
+    background-clip: text;
+    font-family: Georgia;
+    border-radius: 12px;
+    margin-left: 5px;
+}
+
+nav ul.navbar-nav.mr-auto > li:nth-child(n+3) {
+    margin-left: 20px;
+}
+
+.main-content {
+    padding: 20px 0;
+}
+
+footer {
+    background-color: #cecece;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 0;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 0.5px solid #b9b9b9;
+    padding: 8px;
+}
+
+th {
+    text-align: left;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.slider {
+    border: 1px solid black;
+    width: 1355px;
+    height: 120px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.slider-line {
+    width: 1024px;
+    height: 256px;
+    display: flex;
+    background: none;
+    position: relative;
+    left: 0;
+    transition: all ease 1s;
+}
+
+.card {
+    margin: 30px 30px 30px 30px;
+}
+
+.block-converted {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 2em;
+    width: 600px;
+}
+
+.navbar-brand + .navbar-nav > .nav-item {
+    margin-left: 20px;
+}

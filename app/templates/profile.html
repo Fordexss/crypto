@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Особистий кабінет</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% endwith %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <form method="POST" action="{{ url_for('update_profile') }}" style="width: 150%; margin-left: -20%;">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.nickname.label(class="form-label") }}
+                    {{ form.nickname(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-label") }}
+                    {{ form.password(class="form-control") }}
+                </div>
+                {{ form.submit(class="btn btn-primary") }}
+            </form>
+            <form action="{{ url_for('logout') }}" method="get">
+                <button type="submit" style="margin-left: 45%;" class="btn btn-danger mt-3">Вийти</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

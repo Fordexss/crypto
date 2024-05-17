@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% block nav %}
+<li class="nav-item" style="margin-left: 1000px;">
+    <a class="nav-link button" href="{{ url_for('login') }}">Увійти</a>
+</li>
+{% endblock nav %}
+{% block content %}
+<br><br><br><br><br>
+<div class="container" style="width: 700px; height: 500px; margin-bottom: -20px;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <h2>Реєстрація</h2>
+    <form method="post">
+        {{ form.nickname.label }}
+        <br>
+        {{ form.nickname(class="form-control") }}
+        <br>
+        {{ form.email.label }}
+        <br>
+        {{ form.email(class="form-control") }}
+        <br>
+        {{ form.password.label }}
+        <br>
+        {{ form.password(class="form-control") }}
+        <br>
+        {{ form.submit(class="btn btn-primary") }}
+        <p style="margin-top: 25px;">Уже зареєстровані? <a href="{{ url_for('login') }}">Увійти</a></p>
+    </form>
+</div>
+{% endblock content %}

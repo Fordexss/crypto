@@ -2,7 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash, mak
 from datetime import timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 from db.db import User, Session
-from helpers import get_crypto_data, get_crypto_news, get_crypto_price, get_top_crypto, custom_enumerate, ConverterForm, RegistrationForm, LoginForm, UpdateProfileForm, crypto_for_converter
+from helpers import get_crypto_data, get_crypto_news, get_crypto_price, get_top_crypto, custom_enumerate, ConverterForm, \
+    RegistrationForm, LoginForm, UpdateProfileForm, crypto_for_converter
 
 app = Flask(__name__)
 session = Session()
@@ -11,7 +12,6 @@ app.config['SECRET_KEY'] = 'CryptoInformer'
 
 
 # Основний функціонал
-
 
 
 @app.route('/')
@@ -28,7 +28,8 @@ def index():
     if top_crypto:
         for crypto in top_crypto:
             crypto['name'] = f"{crypto['name']} ({crypto['symbol']})"
-        return render_template('index.html', top_crypto=top_crypto, enumerate=custom_enumerate, news=news_f_temp, cookie=cookie)
+        return render_template('index.html', top_crypto=top_crypto, enumerate=custom_enumerate, news=news_f_temp,
+                               cookie=cookie)
     else:
         return 'Не вдалося отримати дані про топ-100 криптовалют'
 
@@ -157,8 +158,6 @@ def logout():
     return response
 
 
-
-
 @app.route('/converter/', methods=['GET', 'POST'])
 def converter():
     cookie = request.cookies.get('user_id')
@@ -173,8 +172,8 @@ def converter():
         price = get_crypto_price(from_crypto, to_crypto)
         crypto_for_converter(form)
         if price:
-            price_f = price * amount
-        flash(f'Ціна { amount } { from_crypto.upper() } у { to_crypto.upper() }: { price_f } { to_crypto.upper() }', 'converted')
+            price_f = round(price * amount, 2)
+        flash(f'Ціна {amount} {from_crypto.upper()} у {to_crypto.upper()}: {price_f} {to_crypto.upper()}', 'converted')
         return render_template('converter.html', form=form, cookie=cookie)
 
 
